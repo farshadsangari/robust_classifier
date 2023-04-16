@@ -1,0 +1,42 @@
+default:
+  num_classes: 10
+  in_channels: 3
+  pretrained: ~
+  epochs: 100
+  learning_rate: 0.01
+  gamma: 0.9
+  epsilon: ~
+  embedding: False
+  to_train_against_adverserial_attack: False
+  ckpt_save_freq: 10
+  batch_size: 256
+  n_samples_per_class: 100
+  n_classes: 10
+  embedding_reduction: False
+  report_root: ./reports
+  train_data_path: ./data/CIFAR10/train/
+  test_data_path: ./data/CIFAR10/train/
+  split_percentage: 20
+  load_saved_model: False
+  ckpt_load_path: False
+  
+
+resnet_ce:
+  model_name: resnet18_classifier
+  ckpt_save_root : ./ckpts/classifier/
+
+
+
+resnet_robust_ce:
+  model_name: resnet18_robust_classifier
+  ckpt_save_root : ./ckpts/robust_classifier/
+  to_train_against_adverserial_attack: True
+  epsilon: 0.1
+
+
+resnet_angular:
+  model_name: resnet18_angular
+  ckpt_save_root : ./ckpts/angular/
+  embedding: True
+  alpha: 45
+  embedding_reduction: True
